@@ -1,13 +1,17 @@
 # gcc-embedded-docker
 
-# Building image
+# Building local image
 
-- `docker build -t mihnen/devenv`
+- `docker build -t mihnen/gcc-embedded-docker`
 
-# Running image local
+# Pull latest image from Github container repository
 
-- Go to directory of source code
+- `docker pull ghcr.io/mihnen/gcc-embedded-docker:master`
+
+# Running image
+
+- Change to directory of your source code
 - Windows
-	- `docker run --rm -it --privileged -v "%cd%:/home/app" mihnen/devenv:latest zsh`
+	- `docker run --rm -it --privileged -v "%cd%:/home/app" mihnen/gcc-embedded-docker:latest zsh`
 - Linux
-	- `docker run --rm -it --privileged -v "$(pwd):/home/app" mihnen/devenv:latest zsh`
+	- `docker run --rm -it --privileged -v "$(pwd):/home/app" gcc-embedded-docker:latest zsh`
