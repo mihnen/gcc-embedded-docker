@@ -4,7 +4,7 @@
 
 - `docker build -t mihnen/devenv`
 
-# Running image
+# Running image local
 
 - Go to directory of source code
 - Windows
