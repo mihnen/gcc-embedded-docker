@@ -20,6 +20,14 @@ RUN apt-get clean &&      \
 			bash                \
 			nano                \
       wget
+RUN   apt-get install -y     		\
+      texlive 									\
+			texlive-latex-base 				\
+			texlive-fonts-recommended \
+			texlive-fonts-extra 			\
+			texlive-latex-extra 			\
+			texlive-science 					\
+			latexmk
 RUN /scripts/install-arm-none-eabi.sh
 ENTRYPOINT /bin/bash -c "git config --global --add safe.directory $PWD" && zsh
 WORKDIR /home/app
