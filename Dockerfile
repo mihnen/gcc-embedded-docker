@@ -1,7 +1,10 @@
 # sytax=docker/dockerfile:1
 FROM debian:bookworm-slim
+SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND: noninteractive
 ENV TZ: Etc/UTC
+COPY scripts/install-arm-none-eabi.sh /scripts/install-arm-none-eabi.sh
+RUN chmod +x /scripts/install-arm-none-eabi.sh
 RUN apt-get clean &&      \
     apt-get update &&     \
     apt-get install --no-install-recommends -y \
@@ -13,11 +16,11 @@ RUN apt-get clean &&      \
       python3             \
       python3-venv        \
       pandoc              \
-      zsh &&              \
-    apt-get install --no-install-recommends -y \
-      gcc-arm-none-eabi                        \
-      libnewlib-arm-none-eabi                  \
-      libstdc++-arm-none-eabi-newlib
-ENTRYPOINT sh -c "git config --global --add safe.directory $PWD" && zsh
+      zsh                 \
+			bash                \
+			nano                \
+      wget
+RUN /scripts/install-arm-none-eabi.sh
+ENTRYPOINT /bin/bash -c "git config --global --add safe.directory $PWD" && zsh
 WORKDIR /home/app
 CMD ["zsh"]

@@ -2,7 +2,7 @@
 
 # Building local image
 
-- `docker build -t mihnen/gcc-embedded-docker`
+- `docker build -t mihnen/gcc-embedded-docker .`
 
 # Pull latest image from Github container repository
 
