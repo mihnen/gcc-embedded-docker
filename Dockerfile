@@ -19,7 +19,8 @@ RUN apt-get clean &&      \
       zsh                 \
 			bash                \
 			nano                \
-      wget
+      wget                \
+      openssh-client
 RUN   apt-get install -y     		\
       texlive 									\
 			texlive-latex-base 				\
