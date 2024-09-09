@@ -21,6 +21,7 @@ RUN apt-get clean &&      \
 			nano                \
       wget                \
       openssh-client
+# Install packages necessary for pandoc/sphinx pdf output
 RUN   apt-get install -y     		\
       texlive 									\
 			texlive-latex-base 				\
@@ -29,6 +30,11 @@ RUN   apt-get install -y     		\
 			texlive-latex-extra 			\
 			texlive-science 					\
 			latexmk
+# Fix system GCC to specific version (12)
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-12 1000
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-12 1000
+RUN update-alternatives --config gcc --skip-auto
+RUN update-alternatives --config g++ --skip-auto
 RUN /scripts/install-arm-none-eabi.sh
 ENTRYPOINT /bin/bash -c "git config --global --add safe.directory $PWD" && zsh
 WORKDIR /home/app

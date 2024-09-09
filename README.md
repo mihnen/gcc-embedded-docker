@@ -14,4 +14,4 @@
 - Windows
 	- `docker run --rm -it --privileged -v "%cd%:/home/app" mihnen/gcc-embedded-docker:latest zsh`
 - Linux
-	- `docker run --rm -it --privileged -v "$(pwd):/home/app" gcc-embedded-docker:latest zsh`
+	- `docker run --rm -it --privileged -v "$(pwd):/home/app" mihnen/gcc-embedded-docker:latest zsh`
